@@ -81,6 +81,7 @@ def main():
             model = torch.load('./checkpoints/ST_B_new/checkpoint-160.pth')
             model.eval()
             model.to(device)
+
             start = time.time()
             running_loss = 0.0
             loader = data_loader_test
@@ -98,6 +99,6 @@ def main():
             end = time.time()
             with open('./scale_map.save', 'wb') as fp:
                 pickle.dump(scale, fp, protocol=pickle.HIGHEST_PROTOCOL)
-            print("\ntest--loss:", running_loss / len(loader), "time spend:%.2fs" % (end - start))
+            print("\ntest--loss:", running_loss / len(loader), "time spend:%.2fs\n" % (end - start))
 if __name__ == '__main__':
     main()
